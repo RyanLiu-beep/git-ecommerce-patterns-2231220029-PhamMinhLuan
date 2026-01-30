@@ -10,36 +10,36 @@ console.log("--- E-Commerce Design Patterns Simulation ---");
 console.log("===========================================\n");
 
 // --- Part 2A: Singleton Pattern ---
-// console.log("--- 2A: Singleton Pattern ---");
-// const cart1 = new CartService();
-// const cart2 = new CartService();
-// cart1.addProduct({ id: 1, name: 'Laptop', price: 1200 });
-// console.log("Cart 1 contents:", cart1.getProducts());
-// console.log("Cart 2 contents:", cart2.getProducts());
-// console.log("Are cart1 and cart2 the same instance?", cart1 === cart2);
-// console.log("\n");
+console.log("--- 2A: Singleton Pattern ---");
+const cart1 = new CartService();
+const cart2 = new CartService();
+cart1.addProduct({ id: 1, name: 'Laptop', price: 1200 });
+console.log("Cart 1 contents:", cart1.getProducts());
+console.log("Cart 2 contents:", cart2.getProducts());
+console.log("Are cart1 and cart2 the same instance?", cart1 === cart2);
+console.log("\n");
 
 
 // --- Part 2B: Factory Pattern ---
-// console.log("--- 2B: Factory Pattern ---");
-// const factory = new ProductFactory();
-// const book = factory.createProduct('book', { title: 'The Pragmatic Programmer', price: 35 });
-// const laptop = factory.createProduct('electronic', { model: 'XPS 15', price: 1500 });
-// book.describe();
-// laptop.describe();
-// console.log("\n");
+console.log("--- 2B: Factory Pattern ---");
+const factory = new ProductFactory();
+const book = factory.createProduct('book', { title: 'The Pragmatic Programmer', price: 35 });
+const laptop = factory.createProduct('electronic', { model: 'XPS 15', price: 1500 });
+book.describe();
+laptop.describe();
+console.log("\n");
 
 
 // --- Part 3A: Decorator Pattern ---
-// console.log("--- 3A: Decorator Pattern ---");
-// let myBook = factory.createProduct('book', { title: 'Design Patterns', price: 45 });
-// // Wrap the book with a gift wrap decorator
-// myBook = new GiftWrapDecorator(myBook);
-// // Wrap it again with an extended warranty decorator
-// myBook = new ExtendedWarrantyDecorator(myBook);
-// console.log(`Final Price: $${myBook.getPrice()}`);
-// console.log(`Final Description: ${myBook.getDescription()}`);
-// console.log("\n");
+console.log("--- 3A: Decorator Pattern ---");
+let myBook = factory.createProduct('book', { title: 'Design Patterns', price: 45 });
+// Wrap the book with a gift wrap decorator
+myBook = new GiftWrapDecorator(myBook);
+// Wrap it again with an extended warranty decorator
+myBook = new ExtendedWarrantyDecorator(myBook);
+console.log(`Final Price: $${myBook.getPrice()}`);
+console.log(`Final Description: ${myBook.getDescription()}`);
+console.log("\n");
 
 
 // --- Part 3B: Facade Pattern ---
