@@ -10,13 +10,28 @@ class CheckoutFacade {
     }
 
     placeOrder(orderDetails) {
-        // TODO: Implement the Facade method.
-        // This method should orchestrate the calls to the subsystem services
-        // in the correct order to simplify the checkout process.
-        // 1. Check if all products are in stock using `inventoryService.checkStock()`.
-        // 2. If they are, process the payment using `paymentService.processPayment()`.
-        // 3. If payment is successful, arrange shipping using `shippingService.arrangeShipping()`.
-        // 4. Log the result of each step. If a step fails, log it and stop.
+        console.log("Starting checkout process...");
+
+        // 1. Check Stock
+        const stockOk = this.inventoryService.checkStock(orderDetails.productIds);
+        if (!stockOk) {
+            console.log("Stock check failed. Order cancelled.");
+            return;
+        }
+
+        // 2. Process Payment
+        // Assuming a fixed amount for this simplified facade example since we don't have the cart passed here.
+        // In a real scenario, we would calculate total from productIds or pass the cart.
+        const amount = 200;
+        const paymentOk = this.paymentService.processPayment(orderDetails.userId, amount);
+        if (!paymentOk) {
+            console.log("Payment failed. Order cancelled.");
+            return;
+        }
+
+        // 3. Arrange Shipping
+        const shippingResult = this.shippingService.arrangeShipping(orderDetails.userId, orderDetails.shippingInfo);
+        console.log(`Order placed successfully! Tracking ID: ${shippingResult.trackingId}`);
     }
 }
 
